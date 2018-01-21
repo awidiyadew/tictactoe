@@ -7,12 +7,6 @@ class TicTacItem {
   }
 }
 
-function isInputValid(input) {
-  const pattern = /[^xo-]/;
-  const isValidChar = !pattern.test(input);
-  return isValidChar && input.length === 9;
-}
-
 function isGameInProgress(input) {
   return input.indexOf('-') !== -1;
 }
@@ -61,7 +55,7 @@ function checkDiagonal2(ticTacToCheck, ticTacArray) {
   return isRowEqual ? ticTacToCheck : undefined;
 }
 
-function calculateScore(input) {
+function promiseCalculateScore(input) {
   return new Promise(((resolve, reject) => {
     let arr = Array.from(input);
 
@@ -131,6 +125,22 @@ function calculateScore(input) {
   }));
 }
 
+function validateInput(input) {
+  return new Promise((resolve, reject) => {
+    const isValid = (input) => {
+      const pattern = /[^xo-]/; // not contain 'x','o','-'
+      const isValidChar = !pattern.test(input);
+      return isValidChar && input.length === 9;
+    };
+
+    if (isValid(input)) {
+      resolve(!isGameInProgress(input));
+    } else {
+      reject('Invalid game board');
+    }
+  });
+}
+
 function run(readline) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -138,19 +148,17 @@ function run(readline) {
   });
 
   rl.question('Insert tic-tac-toe char (X-O)? ', (input) => {
-    if (isInputValid(input)) {
-      console.log('valid');
-      if (isGameInProgress(input)) {
-        console.log('game in progress');
-      } else {
-        console.log('valid game >>> calculate game!');
-        calculateScore(input)
-          .then((message) => console.log(message))
-          .catch((error) => console.log(error));
-      }
-    } else {
-      console.log('invalid board');
-    }
+    validateInput(input)
+      .then((shouldCalculateScore) => {
+        if (shouldCalculateScore) {
+          console.log('should calculate score');
+          return promiseCalculateScore(input);
+        } else {
+          throw 'Game still in progress!';
+        }
+      })
+      .then((message) => console.log(message))
+      .catch((reason) => console.log(reason));
 
     rl.close();
   });
