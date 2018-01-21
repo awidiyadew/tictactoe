@@ -3,7 +3,7 @@ const readline = require('readline');
 class TicTacItem {
   constructor(position, character) {
     this.position = position;
-    this.character = character;
+    this.character = character.toUpperCase();
   }
 }
 
@@ -55,7 +55,7 @@ function checkDiagonal2(ticTacToCheck, ticTacArray) {
   return isRowEqual ? ticTacToCheck : undefined;
 }
 
-function promiseCalculateScore(input) {
+function calculateScore(input) {
   return new Promise(((resolve, reject) => {
     let arr = Array.from(input);
 
@@ -70,9 +70,9 @@ function promiseCalculateScore(input) {
 
     horizontalResult.forEach((res) => {
       if (res instanceof TicTacItem) {
-        if (res.character === 'x') {
+        if (res.character === 'X') {
           scoreX += 1;
-        } else if (res.character === 'o') {
+        } else if (res.character === 'O') {
           scoreO += 1;
         }
       }
@@ -85,9 +85,9 @@ function promiseCalculateScore(input) {
 
     verticalResult.forEach((res) => {
       if (res instanceof TicTacItem) {
-        if (res.character === 'x') {
+        if (res.character === 'X') {
           scoreX += 1;
-        } else if (res.character === 'o') {
+        } else if (res.character === 'O') {
           scoreO += 1;
         }
       }
@@ -101,9 +101,9 @@ function promiseCalculateScore(input) {
 
     diagonalResult.forEach((res) => {
       if (res instanceof TicTacItem) {
-        if (res.character === 'x') {
+        if (res.character === 'X') {
           scoreX += 1;
-        } else if (res.character === 'o') {
+        } else if (res.character === 'O') {
           scoreO += 1;
         }
       }
@@ -128,8 +128,8 @@ function promiseCalculateScore(input) {
 function validateInput(input) {
   return new Promise((resolve, reject) => {
     const isValid = (input) => {
-      const pattern = /[^xo-]/; // not contain 'x','o','-'
-      const isValidChar = !pattern.test(input);
+      const pattern = /[^XO-]/; // not contain 'X','O','-'
+      const isValidChar = !pattern.test(input.toUpperCase());
       return isValidChar && input.length === 9;
     };
 
@@ -147,12 +147,11 @@ function run(readline) {
     output: process.stdout
   });
 
-  rl.question('Insert tic-tac-toe char (X-O)? ', (input) => {
+  rl.question('Insert tic-tac-toe char (xo-)? ', (input) => {
     validateInput(input)
       .then((shouldCalculateScore) => {
         if (shouldCalculateScore) {
-          console.log('should calculate score');
-          return promiseCalculateScore(input);
+          return calculateScore(input);
         } else {
           throw 'Game still in progress!';
         }
