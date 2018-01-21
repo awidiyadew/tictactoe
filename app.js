@@ -62,60 +62,73 @@ function checkDiagonal2(ticTacToCheck, ticTacArray) {
 }
 
 function calculateScore(input) {
-  let arr = Array.from(input);
+  return new Promise(((resolve, reject) => {
+    let arr = Array.from(input);
 
-  let ticTacToeArray = arr.map((item, position) => new TicTacItem(position, item));
-  let scoreX = 0;
-  let scoreO = 0;
+    let ticTacToeArray = arr.map((item, position) => new TicTacItem(position, item));
+    let scoreX = 0;
+    let scoreO = 0;
 
-  let horizontalResult = [];
-  horizontalResult.push(checkHorizontal(ticTacToeArray[0], ticTacToeArray));
-  horizontalResult.push(checkHorizontal(ticTacToeArray[3], ticTacToeArray));
-  horizontalResult.push(checkHorizontal(ticTacToeArray[6], ticTacToeArray));
+    let horizontalResult = [];
+    horizontalResult.push(checkHorizontal(ticTacToeArray[0], ticTacToeArray));
+    horizontalResult.push(checkHorizontal(ticTacToeArray[3], ticTacToeArray));
+    horizontalResult.push(checkHorizontal(ticTacToeArray[6], ticTacToeArray));
 
-  horizontalResult.forEach((res) => {
-    if (res instanceof TicTacItem) {
-      if (res.character === 'x') {
-        scoreX += 1;
-      } else if (res.character === 'o') {
-        scoreO += 1;
+    horizontalResult.forEach((res) => {
+      if (res instanceof TicTacItem) {
+        if (res.character === 'x') {
+          scoreX += 1;
+        } else if (res.character === 'o') {
+          scoreO += 1;
+        }
       }
-    }
-  });
+    });
 
-  let verticalResult = [];
-  verticalResult.push(checkVertical(ticTacToeArray[0], ticTacToeArray));
-  verticalResult.push(checkVertical(ticTacToeArray[1], ticTacToeArray));
-  verticalResult.push(checkVertical(ticTacToeArray[2], ticTacToeArray));
+    let verticalResult = [];
+    verticalResult.push(checkVertical(ticTacToeArray[0], ticTacToeArray));
+    verticalResult.push(checkVertical(ticTacToeArray[1], ticTacToeArray));
+    verticalResult.push(checkVertical(ticTacToeArray[2], ticTacToeArray));
 
-  verticalResult.forEach((res) => {
-    if (res instanceof TicTacItem) {
-      if (res.character === 'x') {
-        scoreX += 1;
-      } else if (res.character === 'o') {
-        scoreO += 1;
+    verticalResult.forEach((res) => {
+      if (res instanceof TicTacItem) {
+        if (res.character === 'x') {
+          scoreX += 1;
+        } else if (res.character === 'o') {
+          scoreO += 1;
+        }
       }
-    }
-  });
+    });
 
-  let diagonalResult1 = checkDiagonal1(ticTacToeArray[0], ticTacToeArray);
-  let diagonalResult2 = checkDiagonal2(ticTacToeArray[2], ticTacToeArray);
-  let diagonalResult = [];
-  diagonalResult.push(diagonalResult1);
-  diagonalResult.push(diagonalResult2);
+    let diagonalResult1 = checkDiagonal1(ticTacToeArray[0], ticTacToeArray);
+    let diagonalResult2 = checkDiagonal2(ticTacToeArray[2], ticTacToeArray);
+    let diagonalResult = [];
+    diagonalResult.push(diagonalResult1);
+    diagonalResult.push(diagonalResult2);
 
-  diagonalResult.forEach((res) => {
-    if (res instanceof TicTacItem) {
-      if (res.character === 'x') {
-        scoreX += 1;
-      } else if (res.character === 'o') {
-        scoreO += 1;
+    diagonalResult.forEach((res) => {
+      if (res instanceof TicTacItem) {
+        if (res.character === 'x') {
+          scoreX += 1;
+        } else if (res.character === 'o') {
+          scoreO += 1;
+        }
       }
-    }
-  });
+    });
 
-  console.log(`result X = ${scoreX}`);
-  console.log(`result O = ${scoreO}`);
+    console.log(`result X = ${scoreX}`);
+    console.log(`result O = ${scoreO}`);
+
+    if (scoreX === 1 && scoreO === 0) {
+      resolve('X Wins!');
+    } else if (scoreO === 1 && scoreX === 0) {
+      resolve('O Wins!')
+    } else if (scoreX === 0 && scoreO === 0) {
+      resolve('Its a draw!');
+    } else {
+      reject('Invalid game board');
+    }
+
+  }));
 }
 
 function run(readline) {
@@ -131,7 +144,9 @@ function run(readline) {
         console.log('game in progress');
       } else {
         console.log('valid game >>> calculate game!');
-        calculateScore(input);
+        calculateScore(input)
+          .then((message) => console.log(message))
+          .catch((error) => console.log(error));
       }
     } else {
       console.log('invalid board');
