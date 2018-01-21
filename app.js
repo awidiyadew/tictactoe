@@ -1,10 +1,5 @@
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 class TicTacItem {
   constructor(position, character) {
     this.position = position;
@@ -12,9 +7,62 @@ class TicTacItem {
   }
 }
 
-rl.question('Insert tictactoe char (X-O)? ', (input) => {
+function isInputValid(input) {
+  const pattern = /[^xo-]/;
+  const isValidChar = !pattern.test(input);
+  return isValidChar && input.length === 9;
+}
+
+function isGameInProgress(input) {
+  return input.indexOf('-') !== -1;
+}
+
+// only check by first value
+function checkHorizontal(ticTacToCheck, ticTacArray) {
+  let charToCheck = ticTacToCheck.character;
+  let isRowEqual = true;
+  for (let i = ticTacToCheck.position + 1; i < ticTacToCheck.position + 3; i++) {
+    let charCompared = ticTacArray[i].character;
+    isRowEqual = isRowEqual && charToCheck === charCompared;
+  }
+  return isRowEqual ? ticTacToCheck : undefined;
+}
+
+function checkVertical(ticTacToCheck, ticTacArray) {
+  let charToCheck = ticTacToCheck.character;
+  let isRowEqual = true;
+  for (let i = ticTacToCheck.position; i < ticTacToCheck.position + 7; i += 3) {
+    let charCompared = ticTacArray[i].character;
+    isRowEqual = isRowEqual && charToCheck === charCompared;
+  }
+
+  return isRowEqual ? ticTacToCheck : undefined;
+}
+
+function checkDiagonal1(ticTacToCheck, ticTacArray) {
+  let charToCheck = ticTacToCheck.character;
+  let isRowEqual = true;
+  for (let i = ticTacToCheck.position; i < 9; i += 4) {
+    let charCompared = ticTacArray[i].character;
+    isRowEqual = isRowEqual && charToCheck === charCompared;
+  }
+
+  return isRowEqual ? ticTacToCheck : undefined;
+}
+
+function checkDiagonal2(ticTacToCheck, ticTacArray) {
+  let charToCheck = ticTacToCheck.character;
+  let isRowEqual = true;
+  for (let i = ticTacToCheck.position; i < 7; i += 2) {
+    let charCompared = ticTacArray[i].character;
+    isRowEqual = isRowEqual && charToCheck === charCompared;
+  }
+
+  return isRowEqual ? ticTacToCheck : undefined;
+}
+
+function calculateScore(input) {
   let arr = Array.from(input);
-  // todo : check is input valid
 
   let ticTacToeArray = arr.map((item, position) => new TicTacItem(position, item));
   let scoreX = 0;
@@ -68,54 +116,29 @@ rl.question('Insert tictactoe char (X-O)? ', (input) => {
 
   console.log(`result X = ${scoreX}`);
   console.log(`result O = ${scoreO}`);
-
-  rl.close();
-});
-
-function isInputValid(input) {
-  return true;
 }
 
-// only check by first value
-function checkHorizontal(ticTacToCheck, ticTacArray) {
-  let charToCheck = ticTacToCheck.character;
-  let isRowEqual = true;
-  for (let i = ticTacToCheck.position + 1; i < ticTacToCheck.position + 3; i++) {
-    let charCompared = ticTacArray[i].character;
-    isRowEqual = isRowEqual && charToCheck === charCompared;
-  }
-  return isRowEqual ? ticTacToCheck : undefined;
+function run(readline) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question('Insert tic-tac-toe char (X-O)? ', (input) => {
+    if (isInputValid(input)) {
+      console.log('valid');
+      if (isGameInProgress(input)) {
+        console.log('game in progress');
+      } else {
+        console.log('valid game >>> calculate game!');
+        calculateScore(input);
+      }
+    } else {
+      console.log('invalid board');
+    }
+
+    rl.close();
+  });
 }
 
-function checkVertical(ticTacToCheck, ticTacArray) {
-  let charToCheck = ticTacToCheck.character;
-  let isRowEqual = true;
-  for (let i = ticTacToCheck.position; i < ticTacToCheck.position + 7; i += 3) {
-    let charCompared = ticTacArray[i].character;
-    isRowEqual = isRowEqual && charToCheck === charCompared;
-  }
-
-  return isRowEqual ? ticTacToCheck : undefined;
-}
-
-function checkDiagonal1(ticTacToCheck, ticTacArray) {
-  let charToCheck = ticTacToCheck.character;
-  let isRowEqual = true;
-  for (let i = ticTacToCheck.position; i < 9; i += 4) {
-    let charCompared = ticTacArray[i].character;
-    isRowEqual = isRowEqual && charToCheck === charCompared;
-  }
-
-  return isRowEqual ? ticTacToCheck : undefined;
-}
-
-function checkDiagonal2(ticTacToCheck, ticTacArray) {
-  let charToCheck = ticTacToCheck.character;
-  let isRowEqual = true;
-  for (let i = ticTacToCheck.position; i < 7; i += 2) {
-    let charCompared = ticTacArray[i].character;
-    isRowEqual = isRowEqual && charToCheck === charCompared;
-  }
-
-  return isRowEqual ? ticTacToCheck : undefined;
-}
+run(readline);
