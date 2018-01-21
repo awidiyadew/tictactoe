@@ -19,9 +19,36 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="311">
+              <caret line="236" column="2" lean-forward="false" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
+              <folding>
+                <element signature="n#TicTacItem#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#TicTacItem#0" expanded="false" />
+                <element signature="n#!!block;n#checkVertical#0" expanded="false" />
+                <element signature="e#1162#1277#0" expanded="false" />
+                <element signature="n#!!block;n#checkDiagonal1#0" expanded="false" />
+                <element signature="e#1509#1624#0" expanded="false" />
+                <element signature="n#!!block;n#checkDiagonal2#0" expanded="false" />
+                <element signature="e#1856#1971#0" expanded="false" />
+                <element signature="e#2647#2681#0" expanded="false" />
+                <element signature="e#2714#2748#0" expanded="false" />
+                <element signature="e#3057#3248#0" expanded="false" />
+                <element signature="e#3096#3242#0" expanded="false" />
+                <element signature="e#3133#3167#0" expanded="false" />
+                <element signature="e#3200#3234#0" expanded="false" />
+                <element signature="e#3556#3747#0" expanded="false" />
+                <element signature="e#3595#3741#0" expanded="false" />
+                <element signature="e#3632#3666#0" expanded="false" />
+                <element signature="e#3699#3733#0" expanded="false" />
+                <element signature="e#4017#4054#0" expanded="false" />
+                <element signature="e#4060#4103#0" expanded="false" />
+                <element signature="n#!!block;n#validateInput#0" expanded="false" />
+                <element signature="e#4189#4594#0" expanded="false" />
+                <element signature="e#4222#4398#0" expanded="false" />
+                <element signature="e#4493#4541#0" expanded="false" />
+                <element signature="e#4547#4590#0" expanded="false" />
+                <element signature="e#4663#4721#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,6 +68,7 @@
       <find>character</find>
       <find>'x'</find>
       <find>'o'</find>
+      <find>isGameInProgress</find>
     </findStrings>
     <replaceStrings>
       <replace>'X'</replace>
@@ -146,15 +174,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516444926655</updated>
-      <workItem from="1516444929141" duration="25129000" />
+      <workItem from="1516444929141" duration="29373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25129000" />
+    <option name="totallyTimeSpent" value="29373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24665257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -162,8 +191,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29364005" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991881" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -197,6 +226,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -241,9 +296,36 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="311">
+          <caret line="236" column="2" lean-forward="false" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
+          <folding>
+            <element signature="n#TicTacItem#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#TicTacItem#0" expanded="false" />
+            <element signature="n#!!block;n#checkVertical#0" expanded="false" />
+            <element signature="e#1162#1277#0" expanded="false" />
+            <element signature="n#!!block;n#checkDiagonal1#0" expanded="false" />
+            <element signature="e#1509#1624#0" expanded="false" />
+            <element signature="n#!!block;n#checkDiagonal2#0" expanded="false" />
+            <element signature="e#1856#1971#0" expanded="false" />
+            <element signature="e#2647#2681#0" expanded="false" />
+            <element signature="e#2714#2748#0" expanded="false" />
+            <element signature="e#3057#3248#0" expanded="false" />
+            <element signature="e#3096#3242#0" expanded="false" />
+            <element signature="e#3133#3167#0" expanded="false" />
+            <element signature="e#3200#3234#0" expanded="false" />
+            <element signature="e#3556#3747#0" expanded="false" />
+            <element signature="e#3595#3741#0" expanded="false" />
+            <element signature="e#3632#3666#0" expanded="false" />
+            <element signature="e#3699#3733#0" expanded="false" />
+            <element signature="e#4017#4054#0" expanded="false" />
+            <element signature="e#4060#4103#0" expanded="false" />
+            <element signature="n#!!block;n#validateInput#0" expanded="false" />
+            <element signature="e#4189#4594#0" expanded="false" />
+            <element signature="e#4222#4398#0" expanded="false" />
+            <element signature="e#4493#4541#0" expanded="false" />
+            <element signature="e#4547#4590#0" expanded="false" />
+            <element signature="e#4663#4721#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
