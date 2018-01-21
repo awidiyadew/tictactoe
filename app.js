@@ -87,26 +87,6 @@ function checkHorizontal(ticTacToCheck, ticTacArray) {
   return isRowEqual ? ticTacToCheck : undefined;
 }
 
-/*function isRowEqual(thisChar, array, initValue, condition, finalExpression) {
-  let isRowEqual = true;
-  for (let i = initValue; i < condition; finalExpression) {
-    const thatChar = array[i].character;
-    isRowEqual = isRowEqual && thisChar === thatChar;
-  }
-  return isRowEqual;
-}*/
-
-/*function checkVertical(ticTacToCheck, ticTacArray) {
-  let charToCheck = ticTacToCheck.character;
-  let isRowEqual = true;
-  for (let i = ticTacToCheck.position; i < ticTacToCheck.position + 7; i += 3) {
-    let charCompared = ticTacArray[i].character;
-    isRowEqual = isRowEqual && charToCheck === charCompared;
-  }
-
-  return isRowEqual ? ticTacToCheck : undefined;
-}*/
-
 function checkVertical(ticTacToCheck, ticTacArray) {
   let charToCheck = ticTacToCheck.character;
   let isRowEqual = true;
@@ -118,16 +98,6 @@ function checkVertical(ticTacToCheck, ticTacArray) {
   return isRowEqual ? ticTacToCheck : undefined;
 }
 
-function repeatTimes(fn, n) {
-  return function() {
-    while (n--) fn(...arguments);
-  };
-}
-
-/*function checkVertical(ticTacToCheck, ticTacArray) {
-  return isRowEqual(ticTacToCheck.character, ticTacArray, ticTacToCheck.position, ticTacToCheck.position + 7, finalExpression(3)) ? ticTacToCheck : undefined;
-}*/
-
 function checkDiagonal1(ticTacToCheck, ticTacArray) {
   let charToCheck = ticTacToCheck.character;
   let isRowEqual = true;
@@ -137,15 +107,6 @@ function checkDiagonal1(ticTacToCheck, ticTacArray) {
   }
 
   return isRowEqual ? ticTacToCheck : undefined;
-}
-
-function lessThan(n) { return i => i < n }
-
-function finalExpression(increment) {
-  return (i) => {
-    i += increment;
-    return i;
-  }
 }
 
 function checkDiagonal2(ticTacToCheck, ticTacArray) {
