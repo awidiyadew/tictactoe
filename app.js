@@ -1,3 +1,11 @@
+/**
+ ==================================
+ * TIC-TAC-TOE by
+ * I DEWA MADE AWIDIYA
+ * Bank BTPN - CHIP
+ ==================================
+ */
+
 const readline = require('readline');
 
 class TicTacItem {
